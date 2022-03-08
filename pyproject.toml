@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "fluentnet"
+version = "0.0.0"
+description = "FluentNet for detecting speech disfluencies."
+authors = ["Jeffrey Wardman <jeffrey.wardman@yahoo.com.au>"]
+repository = "https://github.com/jeffreywardman/FluentNet"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.9"
+
+[tool.poetry.dev-dependencies]
+black = "^21.5b1"
+isort = ">=4.0,<5.0" # "^5.8.0"
+pylint = "^2.8.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+multi_line_output=3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line-length = 140
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+^/(
+  (
+    \.eggs
+    | \.git
+    | build
+    | dist
+    | wandb
+  )
+)
+'''
+
+[tool.isort]
+line_length = 140
+profile = "black"
+src_paths = ["fluentnet", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["--doctest-modules", "--cov=fluentnet", "--cov-report=term-missing"]
+testpaths = ["tests"]
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 140
