@@ -50,4 +50,5 @@ class FluentNet:
         interjection = self.interjection_model(x)
         prolongation = self.prolongation_model(x)
 
-        return sound_rep, word_rep, phrase_rep, revision, interjection, prolongation
+        out = torch.stack([sound_rep, word_rep, phrase_rep, revision, interjection, prolongation], axis=-1)
+        return out
