@@ -7,7 +7,7 @@ repository = "https://github.com/jeffreywardman/FluentNet"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.9"
+python = ">=3.8,<4.0"
 isort = "^5.10.1"
 einops = "^0.4.1"
 pytest = "^7.0.1"

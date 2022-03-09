@@ -14,7 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /home
 
 # Install poetry 1.2.0
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 - --version 1.2.0 && \
+COPY pyproject.toml poetry.lock /home/
+RUN curl -sSL https://install.python-poetry.org | python - --preview && \
+    export PATH="/root/.local/bin:$PATH" && \
+    pip3 install poethepoet && \
     poetry install && \
     poe download_torch
 
