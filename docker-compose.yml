@@ -1,10 +1,10 @@
 version: "3.7"
 services:
   test:
-    image: python:3.8-slim
+    image: fluentnet_container:latest
     working_dir: /home/python/app
     volumes:
       - .:/home/python/app
     command:
-      - ./scripts/run_tests.sh
+      - make run_tests
   
